@@ -7,7 +7,7 @@ const recieveName = getName.value
 console.log(recieveName)
 if(recieveName=="" ){
     Swal.fire(`Error!!!!
-    Pleaser give a name`)
+    please give your phone name to know the details`)
 } 
 else{
     const url = (`https://openapi.programming-hero.com/api/phones?search=${recieveName}`)
