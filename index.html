@@ -13,13 +13,25 @@
             color:black;
             font-family:sans-serif
         }
+        #search-result{
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            background-color:rgb(124, 116, 134);
+            color:red;
+            font-family:sans-serif;
+            
+        }
+        .card{
+            border:1px solid rgb(146, 141, 141);
+            border-radius:10px;
+        }
     </style>
 </head>
 <body>
     
 <!-- search bar -->
 
-<h3 class="text-center mt-5">Explore Your Favourite Phone</h3>
+<h3 class="text-center mt-5">Explore  Phone</h3>
         <div class="input-group mb-3 w-50 mx-auto">
             <input id='give-name'type="text" class="form-control " placeholder="Explore Your Favourite Phone" aria-label="cocktail" aria-describedby="button-addon2">
             <button onClick="searchPhone()" class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
