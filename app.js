@@ -5,21 +5,41 @@ const searchPhone= async ()=>{
 const getName = document.getElementById('give-name')
 const recieveName = getName.value
 console.log(recieveName)
+if(recieveName=="" ){
+    Swal.fire(`Error!!!!
+    Pleaser give a name`)
+} 
+else{
+    const url = (`https://openapi.programming-hero.com/api/phones?search=${recieveName}`)
 
-// load data
-const url = (`https://openapi.programming-hero.com/api/phones?search=${recieveName}`)
+    const res= await fetch(url)
+    const data = await res.json()
+    if(data.data.length ==0){
+        document.getElementById("spinner").style.display = "block";
+        setTimeout(() =>{
+            document.getElementById("spinner").style.display = "none";
+            Swal.fire(`Sorry!!!!
+            The phone you want to search is unavailable`)
+          },3000)
+    }else{
+        // load data
+        displayResult(data.data)
+        //console.log(data)
+        getName.value=""
+    }
+}
 
-const res= await fetch(url)
-const data = await res.json()
-displayResult(data.data)
-//console.log(data)
-getName.value=""
+
+
 }
 
 
 // display result
 
 const displayResult =(phone)=>{
+    document.getElementById("spinner").style.display = "block";
+    setTimeout(() =>{ 
+        document.getElementById("spinner").style.display = "none";
     const limited = phone.slice(0,20)
     //console.log(limited)
     const display = document.getElementById("search-result")
@@ -47,6 +67,7 @@ div.innerHTML =`
 display.appendChild(div)
 
     })
+},2000)
 }
 // details part
 
@@ -61,14 +82,14 @@ const details = async(id) =>{
    }
 
    const phoneDetails =(result)=>{
+    document.getElementById("spinner").style.display = "block";
+    setTimeout(() =>{
+        document.getElementById("spinner").style.display = "none";     
 const showDetail = document.getElementById("detail")
 showDetail.textContent=""
 const div = document.createElement("div")
 div.classList.add("col")
 div.innerHTML = `
-
-
-
 <div class="card mb-3" style="max-width:840px">
 <div class="row g-0">
 
@@ -105,20 +126,9 @@ ${result.others?
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
 </div>
-
 
 `
 showDetail.appendChild(div)
-   }
+   },3000)
+}
