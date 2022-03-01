@@ -30,20 +30,26 @@
             margin-top:10%;
             margin-left:20%
         }
-        h1{
-           color:rgb(255, 0, 179);
-           display: none;
-           text-align: center;
+
+        
+        
+
+        #create-button{
+            background-color:lightsteelblue;
+            margin-left:20%
         }
+    
+        
     </style>
 </head>
 <body>
-    
+  
 <!-- search bar -->
 
-<h3 class="text-center mt-5">Explore  Phone</h3>
+<h3 class="text-center mt-5">Explore  Mobile</h3>
+
         <div class="input-group mb-3 w-50 mx-auto">
-            <input id='give-name'type="text" class="form-control " placeholder="Explore Your Favourite Phone" aria-label="cocktail" aria-describedby="button-addon2">
+            <input id='give-name'type="text" class="form-control " placeholder="Explore Your Favourite Phone" aria-label="phone" aria-describedby="button-addon2">
             <button onClick="searchPhone()" class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
           </div> 
 
@@ -60,15 +66,17 @@
       </button>
 </div>
 
-<!-- <h1 id="text">Sorry,The phone you want to search is unavailable.</h1> -->
-
 <!-- single phone detail -->
 <div id="detail"></div>
-<div class="container">
-<!-- search result -->
-<div id="search-result" class="row row-cols-md-3 row-cols-1 mx-auto my-4   g-4"></div>
 
+<!-- search result -->
+<h3 id="quantity"class="text-center "></h3>
+
+<h3 id="available"style="margin-left:10%;margin-top:5%;color:red"></h3>
+<div class="container">
+<div id="search-result" class="row row-cols-md-3 row-cols-1 mx-auto my-4   g-4"></div>
 </div>
+<div id="create-button"></div>
 
 
 
