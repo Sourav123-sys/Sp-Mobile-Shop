@@ -28,7 +28,7 @@ else{
             The phone you want to search is unavailable`)
           },3000)
     }else{
-        // load data
+       
         displayResult(data.data)
         //console.log(data)
         document.getElementById("create-button").textContent =""
@@ -64,7 +64,7 @@ document.getElementById("load-more").textContent =""
 
 const load = document.getElementById("create-button")
 const loadMore = document.createElement("div")
-loadMore .innerHTML = `<button style="border:none;margin-left:20px;;background-color:blue;width:150px;height:30px;color:white;border-radius:5px"onClick="seeMore()">Load More..</button>`
+loadMore .innerHTML = `<button 0class="my-2"style="border:none;background-color:blue;width:150px;height:30px;color:white;border-radius:5px"onClick="seeMore()">Load More..</button>`
 load.appendChild(loadMore)
 
 
@@ -76,9 +76,7 @@ const div = document.createElement("div")
 const h3 = document.getElementById("quantity")
 h3.innerText=` ${phoneQuantity} piece ${document.getElementById('give-name').value} Model available in our stock`
 
-// const availableStock = document.getElementById("available")
-// availableStock.innerText=`
-// Availbale Stock`
+
 
 div.classList.add("col")
 div.innerHTML =`
@@ -97,15 +95,12 @@ div.innerHTML =`
 
 display.appendChild(div)
 
-//loadMore.appendChild(button)
+
 
     })
 },2000)
 }
 // details part
-
-
-
 
 const details = async(id) =>{
 
@@ -136,20 +131,20 @@ div.innerHTML = `
 <p class="card-text mb-1">Brand: ${result.brand}</p>
 <p class="card-text mb-1">Release-Date: ${result.releaseDate? result.releaseDate:"Coming Soon..." }</p>
 <p style="color:red"class=" fw-bold mb-1">Main Features</p>
-<li> <span style="background-color:lightgray;padding-left:10px; padding-right:10px;">storage: ${result.mainFeatures.storage? result.mainFeatures.storage:'No data found'}</span></li>
-<li><span style="background-color:lightgray;padding-left:10px; padding-right:10px;">Memory: ${result.mainFeatures.memory? result.mainFeatures.memory:'No data found'}</span></li>
-<li><span style="background-color:lightgray;padding-left:10px; padding-right:10px;">chipSet: ${result.mainFeatures.chipSet? result.mainFeatures.chipSet:'No data found'}</span></li>
-<li ><span style="background-color:lightgray;padding-left:10px; padding-right:10px;">Display: ${result.mainFeatures.displaySize? result.mainFeatures.displaySize:'No data found'}</span></li>
+<li> <span >storage: ${result.mainFeatures.storage? result.mainFeatures.storage:'No data found'}</span></li>
+<li><span >Memory: ${result.mainFeatures.memory? result.mainFeatures.memory:'No data found'}</span></li>
+<li><span >chipSet: ${result.mainFeatures.chipSet? result.mainFeatures.chipSet:'No data found'}</span></li>
+<li ><span>Display: ${result.mainFeatures.displaySize? result.mainFeatures.displaySize:'No data found'}</span></li>
 <p style="color:red"class=" fw-bold mb-1">Sensors</p>
-<span style="background-color:lightgray;padding-left:10px; padding-right:10px;">${result.mainFeatures.sensors? result.mainFeatures.sensors:'No data found'}</span>
+<span >${result.mainFeatures.sensors? result.mainFeatures.sensors:'No data found'}</span>
 <p style="color:red"class=" fw-bold mb-1">Others</p>
 ${result.others? 
-`<li> <span style="background-color:lightgray;padding-left:10px; padding-right:10px;">Bluetooth:${result.others.Bluetooth} </span></li>
-<li><span style="background-color:lightgray;padding-left:10px; padding-right:10px;">Wlan:${result.others.WLAN} </span></li>
-<li> <span style="background-color:lightgray;padding-left:10px; padding-right:10px;">GPS:  ${result.others.GPS}</span> </li>
-<li> <span style="background-color:lightgray;padding-left:10px; padding-right:10px;">NFC:  ${result.others.NFC} </span></li>
-<li> <span style="background-color:lightgray;padding-left:10px; padding-right:10px;">Radio:  ${result.others.Radio}</span></li>
-<li> <span style="background-color:lightgray;padding-left:10px; padding-right:10px;">Usb:  ${result.others.USB}</span> </li>`
+`<li> <span >Bluetooth:${result.others.Bluetooth} </span></li>
+<li><span >Wlan:${result.others.WLAN} </span></li>
+<li> <span>GPS:  ${result.others.GPS}</span> </li>
+<li> <span >NFC:  ${result.others.NFC} </span></li>
+<li> <span >Radio:  ${result.others.Radio}</span></li>
+<li> <span >Usb:  ${result.others.USB}</span> </li>`
     
     :'This phone has no other features'}
 </div>
@@ -177,7 +172,7 @@ const url = (`https://openapi.programming-hero.com/api/phones?search=${recieveMo
  fetch(url)
  .then(response => response.json())
     .then(data => extraLoad(data.data,"load"));
-// const showNew = data
+
 document.getElementById("create-button").textContent = ""
 }
 
@@ -187,8 +182,7 @@ const extraLoad =(newLoad)=>{
     console.log(newLimited)
     const newDisplay = document.getElementById("load-more")
     newDisplay.textContent =""
-    console.log(newDisplay,"dis")
-  
+   
 
 newLimited.map(newShow=>{
 //console.log(show)
@@ -208,11 +202,10 @@ div.innerHTML =`
         </div>
       </div>
 `
-
-
 newDisplay.appendChild(div)
 
-//loadMore.appendChild(button)
+
+
 
     })
 
