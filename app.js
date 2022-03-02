@@ -64,7 +64,7 @@ document.getElementById("load-more").textContent =""
 
 const load = document.getElementById("create-button")
 const loadMore = document.createElement("div")
-loadMore .innerHTML = `<button style="border:none;margin-left:20px;;background-color:blue;width:150px;color:white"onClick="seeMore()">Load More..</button>`
+loadMore .innerHTML = `<button style="border:none;margin-left:20px;;background-color:blue;width:150px;height:30px;color:white;border-radius:5px"onClick="seeMore()">Load More..</button>`
 load.appendChild(loadMore)
 
 
