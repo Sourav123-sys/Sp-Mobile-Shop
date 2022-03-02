@@ -1,4 +1,5 @@
 
+
 // search result
 const searchPhone= async ()=>{
 
@@ -30,42 +31,50 @@ else{
         // load data
         displayResult(data.data)
         //console.log(data)
-        getName.value=""
+        
+       
     }
+    
 }
-
-
-
 }
-
 
 // display result
 
 const displayResult =(phone)=>{
+   
+    
     document.getElementById("spinner").style.display = "block";
     setTimeout(() =>{ 
         document.getElementById("spinner").style.display = "none";
+
     const limited = phone.slice(0,20)
 //    console.log(limited)
 //    console.log(limited.length)
-   const phoneQuantity= limited.length
+   const phoneQuantity= phone.length
    //console.log(phoneQuantity)
     const display = document.getElementById("search-result")
     display.textContent =""
     const showDetail = document.getElementById("detail")
 showDetail.textContent=""
 
+document.getElementById("load-more").textContent =""
 
+
+//load more button
+
+const load = document.getElementById("create-button")
+const loadMore = document.createElement("div")
+loadMore .innerHTML = `<button style="border:none;margin-left:20px;;background-color:blue;width:150px;color:white"onClick="seeMore()">Load More..</button>`
+load.appendChild(loadMore)
 
 
     limited.map(show=>{
 //console.log(show)
-
 //console.log(display)
 const div = document.createElement("div")
 
 const h3 = document.getElementById("quantity")
-h3.innerText=`This brand has  ${phoneQuantity} phones in Stock`
+h3.innerText=` ${phoneQuantity} piece ${document.getElementById('give-name').value} Model available in our stock`
 
 // const availableStock = document.getElementById("available")
 // availableStock.innerText=`
@@ -87,12 +96,16 @@ div.innerHTML =`
 
 
 display.appendChild(div)
+
 //loadMore.appendChild(button)
 
     })
 },2000)
 }
 // details part
+
+
+
 
 const details = async(id) =>{
 
@@ -114,7 +127,7 @@ const div = document.createElement("div")
 div.classList.add("col")
 div.innerHTML = `
 
-<div class="card mb-3" style="max-width:800px">
+<div class="card mb-3" style="max-width:800px;margin-right:100px">
 <div class="row g-0 ">
 
 <div class="col-md-8">
@@ -154,6 +167,53 @@ showDetail.appendChild(div)
    },3000)
 }
 
+//optional load part
+
+const seeMore = () =>{
+    const MoreName = document.getElementById('give-name')
+const recieveMoreName = MoreName.value
+MoreName.value=""
+const url = (`https://openapi.programming-hero.com/api/phones?search=${recieveMoreName}`)
+ fetch(url)
+ .then(response => response.json())
+    .then(data => extraLoad(data.data,"load"));
+// const showNew = data
+document.getElementById("create-button").textContent = ""
+}
+
+const extraLoad =(newLoad)=>{
+    console.log(newLoad,"new")
+    const newLimited = newLoad.slice(21,80)
+    console.log(newLimited)
+    const newDisplay = document.getElementById("load-more")
+    newDisplay.textContent =""
+    console.log(newDisplay,"dis")
+  
+
+newLimited.map(newShow=>{
+//console.log(show)
+//console.log(display)
+const div = document.createElement("div")
+
+div.classList.add("col")
+div.innerHTML =`
+<div class="card" style="width: 18rem;">
+
+        <img src="${newShow.image}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Name: ${newShow.phone_name}</h5>
+          <h5 class="card-title">Brand: ${newShow.brand}</h5>
+       
+          <button style="background-color:rgb(50, 50, 104);color:white;margin-left:60%;border:none;border-radius:10px;width:100px"onClick = "details('${newShow.slug}')">Details</button>
+        </div>
+      </div>
+`
 
 
+newDisplay.appendChild(div)
 
+//loadMore.appendChild(button)
+
+    })
+
+}
