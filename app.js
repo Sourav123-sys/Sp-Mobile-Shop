@@ -31,7 +31,7 @@ else{
         // load data
         displayResult(data.data)
         //console.log(data)
-        
+        document.getElementById("create-button").textContent =""
        
     }
     
