@@ -1,5 +1,5 @@
 
-
+let x = 0;
 // search result
 const searchPhone= async ()=>{
 
@@ -10,6 +10,7 @@ if(recieveName=="" ){
     Swal.fire(`Error!!!!
     please give your phone name to know the details`)
 } 
+
 else if(!isNaN(recieveName)){
     
     Swal.fire(`Error!!!!
@@ -19,7 +20,10 @@ else{
     const url = (`https://openapi.programming-hero.com/api/phones?search=${recieveName}`)
 
     const res= await fetch(url)
+
     const data = await res.json()
+   
+    x = data.data.length
     if(data.data.length ==0){
         document.getElementById("spinner").style.display = "block";
         setTimeout(() =>{
@@ -61,11 +65,14 @@ document.getElementById("load-more").textContent =""
 
 
 //load more button
-
-const load = document.getElementById("create-button")
+console.log(x)
+if(x>=20){
+    console.log(x)
+    const load = document.getElementById("create-button")
 const loadMore = document.createElement("div")
 loadMore .innerHTML = `<button 0class="my-2"style="border:none;background-color:blue;width:150px;height:30px;color:white;border-radius:5px"onClick="seeMore()">Load More..</button>`
 load.appendChild(loadMore)
+}
 
 
     limited.map(show=>{
